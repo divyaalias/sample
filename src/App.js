@@ -12,22 +12,11 @@ class App extends Component {
             result: "",
             languages: [
                 {
-                    id: 1,
-                    name: "Ruby",
+                    id: null,
+                    name: "",
                     description: "",
-                    status: "active",
-                    count: 10,
-                    created_at: null,
-                    updated_at: null
-                },
-                {
-                    id: 2,
-                    name: "Pearl",
-                    description: "",
-                    status: "Inactive",
-                    count: 10,
-                    created_at: null,
-                    updated_at: null
+                    status: "",
+                    count: 0
                 }
             ]
         }
@@ -41,6 +30,13 @@ class App extends Component {
         })
         this.setState({ languages: languages });
     }
+
+    addItem(item) {
+        this.setState({
+            languages: this.state.languages.concat(item)
+        })
+    }
+    
     
     buttonClicked(id, count) {
         const languages = this.state.languages;
@@ -51,9 +47,12 @@ class App extends Component {
         })
         this.setState({ languages: languages });
     }
+    handleChange(e) {
+        this.setState({ name: e.target.value });
+    }
 
     buttonWinner() {
-        const languages = this.state.languages;
+        const languages = this.state.languages.filter(x => x.status === "active");
         function getMax(languages, prop) {
             var max;
             for (var i = 0; i < languages.length ; i++) {
@@ -76,6 +75,8 @@ class App extends Component {
     }
 
     componentDidUpdate() {
+        {/* localStorage.removeItem("languages"); 
+        */ }
         localStorage.setItem('languages', JSON.stringify(this.state.languages));
     }
     render() {
@@ -95,7 +96,15 @@ class App extends Component {
                         </nav>
                         <Switch>
                             <div class="body_sec"> 
-                                <Route path="/create" component={CreateLanguageComponent}></Route>
+                                <Route path="/create" exact strict render={
+                                    () => {
+                                        return (
+                                            <div className="app1">
+                                                <CreateLanguageComponent addItem={this.addItem.bind(this)} />
+                                            </div>
+                                        );
+                                    }
+                                } />
                                 <Route path="/" exact strict render={
                                     () => {
                                         return (
