@@ -21,7 +21,7 @@ class LanguageListComponent extends Component {
                     </thead>
                     <tbody>
                         {this.props.languages.map((item, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item.name}</td>
                                 <td><button className={item.status} onClick={() => { this.props.statusUpdate(item.id, item.status) }}>{item.status}</button></td>
                                 <td>actions</td>

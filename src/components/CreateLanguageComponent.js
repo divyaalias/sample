@@ -6,10 +6,10 @@ class CreateLanguageComponent extends Component {
             <div className="create-lang">
                 <h2>Add Language</h2>
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input type="text" onChange={e => this.setState({ name: e.target.value })} class="form-control" placeholder="Enter the language name" />
-                    <input type="text" onChange={e => this.setState({ description: e.target.value })} class="form-control" placeholder="Enter the description" />
-                    <input type="submit" class="add-new" value="Submit" />
-                    <button type="button" class="add-new">Cancel</button>
+                    <input type="text" onChange={e => this.setState({ name: e.target.value })} className="form-control" placeholder="Enter the language name" />
+                    <input type="text" onChange={e => this.setState({ description: e.target.value })} className="form-control" placeholder="Enter the description" />
+                    <input type="submit" className="add-new" value="Submit" />
+                    <button type="button" className="add-new">Cancel</button>
                 </form>
             </div>
         )

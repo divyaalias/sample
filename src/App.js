@@ -65,7 +65,7 @@ class App extends Component {
         this.setState({ result: winner})
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let itemsList = localStorage.getItem('languages')
         if (itemsList) {
             this.setState({
@@ -83,7 +83,6 @@ class App extends Component {
         return (
             <div className="App">
                 <Router>
-                    
                         <header>
                             <div className="head">Language Voting Application</div>
                     </header>
@@ -95,7 +94,7 @@ class App extends Component {
                             </ul>
                         </nav>
                         <Switch>
-                            <div class="body_sec"> 
+                            
                                 <Route path="/create" exact strict render={
                                     () => {
                                         return (
@@ -124,7 +123,7 @@ class App extends Component {
                                         );
                                     }
                                 } />
-                            </div>
+                            
                         </Switch>
                     </div>
                 </Router>

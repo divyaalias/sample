@@ -17,7 +17,7 @@ class VoteComponent extends Component {
                     </thead>
                     <tbody>
                         {this.props.languages.map((item, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item.name}</td>
                                 <td>{item.count}</td>
                                 <td><button onClick={() => { this.props.buttonClicked(item.id, item.count) }}>Click to vote</button></td>
@@ -26,7 +26,7 @@ class VoteComponent extends Component {
                     </tbody>
                 </table>
                 <div className="winner">
-                    <button onClick={() => { this.props.buttonWinner() }}>Winner</button>
+                    <button className="winnerBtn" onClick={() => { this.props.buttonWinner() }}>Winner</button>
                     <div className="content">
                         {result.name + "-" + result.count}
                     </div>
